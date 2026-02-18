@@ -1,0 +1,21 @@
+# Node
+mcp-server/node_modules/
+mcp-server/dist/
+
+# .NET
+revit-addin/**/bin/
+revit-addin/**/obj/
+*.user
+*.suo
+*.vs/
+
+# IDE
+.idea/
+*.swp
+
+# OS
+Thumbs.db
+.DS_Store
+
+# Logs
+*.log
