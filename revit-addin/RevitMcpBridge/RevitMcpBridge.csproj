@@ -1,0 +1,95 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <!--
+      Build for your Revit version:
+        Revit 2022-2024 → net4.8
+        Revit 2025-2027 → net8.0-windows
+
+      To build:
+        dotnet build -p:RevitVersion=2024
+        dotnet build -p:RevitVersion=2025
+        dotnet build -p:RevitVersion=2026
+        dotnet build -p:RevitVersion=2027
+
+      Custom install path:
+        dotnet build -p:RevitVersion=2026 -p:RevitInstallDir="D:\Autodesk\Revit 2026"
+    -->
+    <RevitVersion Condition="'$(RevitVersion)' == ''">2024</RevitVersion>
+
+    <TargetFramework Condition="'$(RevitVersion)' &lt; '2025'">net4.8</TargetFramework>
+    <TargetFramework Condition="'$(RevitVersion)' &gt;= '2025'">net8.0-windows</TargetFramework>
+
+    <AssemblyName>RevitMcpBridge</AssemblyName>
+    <RootNamespace>RevitMcpBridge</RootNamespace>
+    <Nullable>enable</Nullable>
+    <LangVersion>10</LangVersion>
+    <PlatformTarget>x64</PlatformTarget>
+    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+  </PropertyGroup>
+
+  <!-- Revit API references — adjust HintPath to your install location -->
+  <PropertyGroup>
+    <RevitInstallDir Condition="'$(RevitInstallDir)' == ''">C:\Program Files\Autodesk\Revit $(RevitVersion)</RevitInstallDir>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Reference Include="RevitAPI">
+      <HintPath>$(RevitInstallDir)\RevitAPI.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+    <Reference Include="RevitAPIUI">
+      <HintPath>$(RevitInstallDir)\RevitAPIUI.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+  </ItemGroup>
+
+  <!--
+    .NET 8 builds (Revit 2025+) need the Windows Desktop framework reference
+    to suppress MSB3277 warnings when referencing RevitAPI / RevitAPIUI.
+  -->
+  <ItemGroup Condition="'$(RevitVersion)' &gt;= '2025'">
+    <FrameworkReference Include="Microsoft.WindowsDesktop.App" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
+  </ItemGroup>
+
+  <!--
+    Version-specific conditional compilation symbols.
+
+    Key API boundaries:
+      REVIT2022-2023 : net4.8, ElementId(int), IntegerValue
+      REVIT2024      : net4.8, ElementId(long) added, IntegerValue deprecated
+      REVIT2025      : net8.0, ElementId(long), IntegerValue deprecated
+      REVIT2026      : net8.0, ElementId(int) REMOVED, IntegerValue REMOVED
+      REVIT2027      : net8.0 (expected), same as 2026 + anticipated changes
+
+    Use REVIT_V_GTE_2024 / REVIT_V_GTE_2026 for conditional blocks:
+      #if REVIT_V_GTE_2026
+          new ElementId((long)id)   // int constructor removed
+      #else
+          new ElementId(id)         // int constructor still available
+      #endif
+  -->
+  <PropertyGroup Condition="'$(RevitVersion)' == '2022'">
+    <DefineConstants>$(DefineConstants);REVIT2022</DefineConstants>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(RevitVersion)' == '2023'">
+    <DefineConstants>$(DefineConstants);REVIT2023</DefineConstants>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(RevitVersion)' == '2024'">
+    <DefineConstants>$(DefineConstants);REVIT2024;REVIT_V_GTE_2024</DefineConstants>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(RevitVersion)' == '2025'">
+    <DefineConstants>$(DefineConstants);REVIT2025;REVIT_V_GTE_2024;REVIT_V_GTE_2025</DefineConstants>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(RevitVersion)' == '2026'">
+    <DefineConstants>$(DefineConstants);REVIT2026;REVIT_V_GTE_2024;REVIT_V_GTE_2025;REVIT_V_GTE_2026</DefineConstants>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(RevitVersion)' == '2027'">
+    <DefineConstants>$(DefineConstants);REVIT2027;REVIT_V_GTE_2024;REVIT_V_GTE_2025;REVIT_V_GTE_2026;REVIT_V_GTE_2027</DefineConstants>
+  </PropertyGroup>
+
+</Project>

@@ -1,0 +1,5 @@
+C:\Users\rene\Repos\RevitMCP\revit-addin\RevitMcpBridge\obj\Debug\RevitMcpBridge.csproj.AssemblyReference.cache
+C:\Users\rene\Repos\RevitMCP\revit-addin\RevitMcpBridge\obj\Debug\RevitMcpBridge.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\rene\Repos\RevitMCP\revit-addin\RevitMcpBridge\obj\Debug\RevitMcpBridge.AssemblyInfoInputs.cache
+C:\Users\rene\Repos\RevitMCP\revit-addin\RevitMcpBridge\obj\Debug\RevitMcpBridge.AssemblyInfo.cs
+C:\Users\rene\Repos\RevitMCP\revit-addin\RevitMcpBridge\obj\Debug\RevitMcpBridge.csproj.CoreCompileInputs.cache

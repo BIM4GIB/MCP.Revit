@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  RevitMcpBridge.addin
+
+  Copy this file to:
+    %APPDATA%\Autodesk\Revit\Addins\<YEAR>\
+
+  Replace <YEAR> with your Revit version (e.g. 2024, 2025, 2026).
+  Update the Assembly path below to the location of your built DLL.
+
+  Revit 2026+ supports add-in dependency isolation via UseRevitContext.
+  Set to false to run in a separate Assembly load context, avoiding
+  version conflicts with other add-ins. Optional; defaults to true.
+-->
+<RevitAddIns>
+  <AddIn Type="Application">
+    <Name>Revit MCP Bridge</Name>
+    <Assembly>C:\RevitMcpBridge\RevitMcpBridge.dll</Assembly>
+    <AddInId>A1B2C3D4-E5F6-7890-ABCD-EF1234567890</AddInId>
+    <FullClassName>RevitMcpBridge.App</FullClassName>
+    <VendorId>REVIT_MCP</VendorId>
+    <VendorDescription>Claude MCP Bridge for Revit</VendorDescription>
+  </AddIn>
+</RevitAddIns>

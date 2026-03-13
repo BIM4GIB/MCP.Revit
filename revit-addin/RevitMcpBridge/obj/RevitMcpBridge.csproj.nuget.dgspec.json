@@ -1,0 +1,62 @@
+{
+  "format": 1,
+  "restore": {
+    "C:\\Users\\rene\\Repos\\RevitMCP\\revit-addin\\RevitMcpBridge\\RevitMcpBridge.csproj": {}
+  },
+  "projects": {
+    "C:\\Users\\rene\\Repos\\RevitMCP\\revit-addin\\RevitMcpBridge\\RevitMcpBridge.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\rene\\Repos\\RevitMCP\\revit-addin\\RevitMcpBridge\\RevitMcpBridge.csproj",
+        "projectName": "RevitMcpBridge",
+        "projectPath": "C:\\Users\\rene\\Repos\\RevitMCP\\revit-addin\\RevitMcpBridge\\RevitMcpBridge.csproj",
+        "packagesPath": "C:\\Users\\rene\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\rene\\Repos\\RevitMCP\\revit-addin\\RevitMcpBridge\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\rene\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net4.8"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {}
+        },
+        "frameworks": {
+          "net48": {
+            "targetAlias": "net4.8",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "9.0.300"
+      },
+      "frameworks": {
+        "net48": {
+          "targetAlias": "net4.8",
+          "dependencies": {
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[13.0.1, )"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.311\\RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}
